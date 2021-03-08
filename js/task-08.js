@@ -17,38 +17,39 @@
 
 const renderBtn = document.querySelector('[data-action="render"]');
 const destroyBtn = document.querySelector('[data-action="destroy"]');
-//const inputDivControls = document.querySelector('#controls');
+const inputDivControls = document.querySelector("#controls input");
 const boxes = document.getElementById('boxes');
 console.log(boxes);
-renderBtn.addEventListener('click', getAmount);
+renderBtn.addEventListener('click', createBoxes);
 destroyBtn.addEventListener('click', destroyBoxes);
 
-function getAmount(){
+function createBoxes(){  //getAmount
     //получение значения числа inputa при увеличении шага 
-    let amount = +document.querySelector("#controls input").value;
+    let amount = +inputDivControls.value;
    
     console.log('Показать добавление числа input', amount);
     
-    createBoxes(amount);
+    createDives(amount);
 }
 
-function createBoxes(amount){
+function createDives(amount){  
+    boxes.innerHTML = "";
     const basicSize = 30;
-    const fragment = document.createDocumentFragment();
+    let dives = [];
 
-    for (let i = 0; i <= amount; i+=1){
-        let size = basicSize + i * 10;
-        const div = document.createElement("div");
-        div.style.cssText = `width: ${size}px;
-                             height: ${size}px;
-                             background-color: rgba( ${random()} , ${random()} , ${random()} )`;
-        fragment.appendChild(div);
-console.log(div);
+for (let i = 0; i < amount; i ++){
+    let size = basicSize + i * 10;
+    const creatDiv = document.createElement("div");
+    creatDiv.style.cssText = `width: ${size}px;
+                                height: ${size}px;
+                                background-color: rgba( ${random()} , ${random()} , ${random()} )`;
+    dives.push(creatDiv);
+    
     }
+console.log(dives);
+    boxes.append(...dives);
 
-    boxes.appendChild(fragment);
-
-    console.log(createBoxes(amount));
+   //console.log(createDives(amount));
 
 }
 
