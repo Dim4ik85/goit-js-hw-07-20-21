@@ -46,10 +46,10 @@ for (let i = 0; i < amount; i ++){
     dives.push(creatDiv);
     
     }
-console.log(dives);
+//console.log(dives);
     boxes.append(...dives);
 
-   //console.log(createDives(amount));
+   
 
 }
 
